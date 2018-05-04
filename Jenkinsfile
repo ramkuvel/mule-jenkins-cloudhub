@@ -4,13 +4,13 @@ pipeline {
   
     stage('Unit Test') { 
       steps {
-        cmd 'mvn clean test'
+        sh 'mvn clean test'
       }
     }
     
     stage('Deploy Standalone') { 
       steps {
-        cmd 'mvn deploy -P standalone'
+        sh 'mvn deploy -P standalone'
       }
     }
     
