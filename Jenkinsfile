@@ -1,16 +1,10 @@
 pipeline {
   agent any
   stages {
-  
-    stage('Unit Test') { 
-      steps {
-        sh 'mvn clean test'
-      }
-    }
     
     stage('Deploy Standalone') { 
       steps {
-        sh 'mvn deploy -P standalone -Dmule.home=D:\Vel\Apps\mule-standalone-4.1.1'
+        sh 'mvn deploy -P standalone -Dmule.home=D:/Vel/Apps/mule-standalone-4.1.1'
       }
     }
     
