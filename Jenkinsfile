@@ -33,7 +33,7 @@ pipeline {
 		
 		steps { 
 		    echo 'This is docker Deployment stage'
-		    sh "sudo docker build -t mule-test ."
+		    sh "docker build -t mule-test ."
 		}
 	
 	}
@@ -42,7 +42,7 @@ pipeline {
 		
 		steps {
 		    echo 'This is Docker Run stage'
-		    sh "sudo docker run -d -p 8081:8081 mule-test"
+		    sh "docker run -d -p 8081:8081 mule-test"
 		}
 	
 	}
