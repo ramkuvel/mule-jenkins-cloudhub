@@ -8,7 +8,7 @@ RUN mkdir /opt
 RUN cd /opt
 RUN wget https://repository-master.mulesoft.org/nexus/content/repositories/releases/org/mule/distributions/mule-standalone/4.1.1/mule-standalone-4.1.1.tar.gz
 RUN tar xvf mule-standalone-4.1.1.tar.gz
-RUN mv mule-standalone-4.1.1.tar.gz mule
+RUN mv mule-standalone-4.1.1 mule
 
 WORKDIR $MULE_HOME
 
