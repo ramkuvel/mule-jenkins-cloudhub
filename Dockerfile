@@ -1,4 +1,4 @@
-ROM java:8
+FROM java:8
 
 MAINTAINER ramkuvel@gmail.com
 
