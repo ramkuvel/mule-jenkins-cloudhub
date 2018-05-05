@@ -32,8 +32,11 @@ pipeline {
 	stage('Docker Deployment') {
 		
 		steps { 
+		    echo 'This is docker Deployment stage .. Files : '
+		    sh 'pwd'
+		    sh 'ls -ltr'
 		    echo 'This is docker Deployment stage'
-		    sh "docker build -t mule-test ."
+		    sh "docker image build -t mule-test ."
 		}
 	
 	}
