@@ -24,7 +24,7 @@ pipeline {
 	}
 	stage('BuildFile 3') { 	
 		steps { 
-		    echo 'This is Build stage 2' 
+		    echo 'This is Build stage 3' 
 		    unstash name: "buildFile"
 		}
     	}	
@@ -32,15 +32,17 @@ pipeline {
 	stage('Docker Deployment') {
 		
 		steps { 
-			sh "docker build -t mule-test ."
+		    echo 'This is docker Deployment stage'
+		    sh "sudo docker build -t mule-test ."
 		}
 	
 	}
 	
 	stage('Docker Run') {
 		
-		steps { 
-			sh "docker run -d -p 8081:8081 mule-test"
+		steps {
+		    echo 'This is Docker Run stage'
+		    sh "sudo docker run -d -p 8081:8081 mule-test"
 		}
 	
 	}
