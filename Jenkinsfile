@@ -1,25 +1,16 @@
-node{
-  
-  try {
-   
-    def mavenHome
-	
-    stage('Get Source') {
-        
-      mavenHome = tool 'maven-3'
-   }
-    
-   stage('Build') {
-      sh "${mavenHome}/bin/mvn clean package -Dmaven.test.skip=true -DskipMunitTests"
-   }
-   
-   stage('Build File') {
-        stash name: "buildFile", includes: "buildFile/*.zip"
-        archive 'buildFile/*.zip'
-   }
-
-  } catch (ex) {
-    throw ex
-  }
-  
+pipeline { 
+    agent any  
+    stages { 
+        stage('Build') { 
+            steps { 
+               echo 'This is Build stage.' 
+            }
+        }
+	    
+ 	stage('Deploy') { 
+            steps { 
+               echo 'This is Deploy stage.' 
+            }
+        }
+    }
 }
