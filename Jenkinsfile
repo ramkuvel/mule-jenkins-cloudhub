@@ -8,13 +8,15 @@ pipeline {
        sh 'mvn clean test'
      }
   }
-    
-  stage('Deploy Standalone') { 
+  
+  
+  stage('Package Test') { 
      steps {
-      echo "Deploy Standalone..."
-      sh 'mvn deploy -P standalone'
-      }
-   }
+       echo "Package Test..."
+       sh 'mvn package'
+     }
+  }
+
    
   }//stages
  
