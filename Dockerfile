@@ -8,5 +8,5 @@ ADD target/*.zip $MULE_HOME/apps
 
 WORKDIR $MULE_HOME
 
-ENTRYPOINT ["./bin/mule"]
+ENTRYPOINT ["./opt/mule/bin/mule"]
 EXPOSE 8081
