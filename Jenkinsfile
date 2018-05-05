@@ -14,15 +14,18 @@ pipeline {
 		   echo 'This is Build stage.' 
 		   sh 'mvn clean test'
 		}
-		
+	}
+	stage('BuildFile 2') { 	
 		steps { 
 		   echo 'This is Build stage 2' 
 		   stash name: "buildFile", includes: "Dockerfile, buildFile/*.zip"
 		   archive 'buildFile/*.zip'
 		}
-		
+	}
+	stage('BuildFile 3') { 	
 		steps { 
-			unstash name: "buildFile"
+		    echo 'This is Build stage 2' 
+		    unstash name: "buildFile"
 		}
     	}	
 	
