@@ -19,7 +19,7 @@ pipeline {
 		steps { 
 		   echo 'This is Build stage 2' 
 		   stash name: "buildFile", includes: "Dockerfile, target/*.zip"
-		   archive 'target/*.zip'
+		  // archive 'target/*.zip'
 		}
 	}
 	stage('BuildFile 3') { 	
