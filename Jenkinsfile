@@ -18,14 +18,14 @@ pipeline {
 	stage('BuildFile 2') { 	
 		steps { 
 		   echo 'This is Build stage 2' 
-		   stash name: "buildFile", includes: "Dockerfile, target/*.zip"
-		  // archive 'target/*.zip'
+		   stash name: "target", includes: "Dockerfile, target/*.zip"
+		   archive 'target/*.zip'
 		}
 	}
 	stage('BuildFile 3') { 	
 		steps { 
 		    echo 'This is Build stage 3' 
-		    unstash name: "buildFile"
+		    unstash name: "target"
 		}
     	}	
 	
