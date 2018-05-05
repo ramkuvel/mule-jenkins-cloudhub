@@ -4,7 +4,7 @@ pipeline {
     
     stage('Deploy Standalone') { 
       steps {
-        sh 'mvn deploy -P standalone'
+        sh 'mvn deploy -P standalone -Dmule.home=/opt/mule/'
       }
     }
     
