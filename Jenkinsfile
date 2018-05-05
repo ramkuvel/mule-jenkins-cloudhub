@@ -6,7 +6,7 @@ node{
 	
     stage('Get Source') {
         
-      mavenHome = tool 'M3'
+      mavenHome = tool 'maven-3'
    }
     
    stage('Build') {
