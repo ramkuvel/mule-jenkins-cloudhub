@@ -1,39 +1,23 @@
 pipeline {
- agent any
- stages {
+  agent any
   
-   stage('Clean up') { 
-     steps {
-       echo "Unit Test..."
-       sh 'mvn clean test'
-     }
-  }
-  
-  
-  stage('Build Package') { 
-     steps {
-       echo "Package Test..."
-       sh 'mvn package'
-     }
-  }
-  
-  stage('Docker Deployment') {
-    steps { 
-        sh 'pwd'
-       echo 'This is docker Deployment stage'
-        sh "docker image build -t mule-cicd ."
+  stages {
+    
+    stage('Unit Test') {
+      steps {
+        sh ' mvn clean test'
+      }
     }
-  }
-  
- stage('Docker Run') {
-  steps {
-       echo 'This is Docker Run stage'
-       sh "docker run -d -p 8081:8081 mule-cicd"
-   }
- }
+    
+    stage('Deploy CloudHub') {
+      environment {
+        ANYPOINT_CREDENTIALS = credentials('anypoint.credentials')
+      }
+      steps {
+        sh 'mvn deploy -P cloudhub -Dmule.version=3.9.0 -Danypoint.username=${ANYPOINT_CREDENTIALS_USR} -Danypoint.password=${ANYPOINT_CREDENTIALS_PSW}'
+      }
+    }
+    
+  } //stages
+}
 
-   
-  }//stages
- 
- 
-} 
